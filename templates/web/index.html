@@ -1,0 +1,301 @@
+<!DOCTYPE html> 
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog</title> 
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+    <style>
+        *{
+            box-sizing: border-box;
+        } 
+        html, body{
+            height: 100%; 
+            box-sizing: inherit; 
+            box-sizing: border-box;
+        }  
+        nav{
+            height: 10%; 
+            width: 100%; 
+            /* border: 2px solid red;   */
+            background-color: gray; 
+            color: white;
+            
+        } 
+        .one{
+            width: 25%; 
+            /* border: 2px solid black;  */
+            height: 100%; 
+            float: left; 
+            text-align: center; 
+            font-style: italic; 
+            font-weight: bolder;
+        } 
+        .two{
+            height: 100%; 
+            width: 50%; 
+            /* border: 2px solid green; */
+            float: left;
+        } 
+        .three{
+            height: 100%; 
+            width: 25%; 
+            /* border: 2px solid gold;  */
+            float: right;
+        }
+        li{
+            list-style: none; 
+            float: left; 
+            padding-left: 25px;  
+            gap: 10px;
+            /* margin-bottom: 10px; */
+        } 
+        .herro{
+            height: 60%; 
+            border: 2px solid green; 
+            width: 100%;
+        } 
+        .herro-headline{
+            width: 50%; 
+            height: 100%; 
+            border: 2px solid black; 
+            float: left;
+        } 
+        .herro-business{
+            width: 50%; 
+            height: 100%; 
+            border: 2px solid gray; 
+            float: right;
+        } 
+        #one{
+            width: 50%; 
+            height: 50%; 
+            border: 2px solid blue; 
+            float: left;
+            text-align: center;
+        } 
+        #two{
+            width: 50%; 
+            height: 50%; 
+            border: 2px solid blue; 
+            float: left;
+            text-align: center;
+        } 
+        #three{
+            width: 50%; 
+            height: 50%; 
+            border: 2px solid blue; 
+            float: left;
+            text-align: center;
+        }
+        #four{
+            width: 50%; 
+            height: 50%; 
+            border: 2px solid blue; 
+            float: left; 
+            text-align: center;
+        } 
+        .big-headline{
+            text-align: center; 
+            font-style: italic; 
+            height: 10%; 
+            width: 100%; 
+            border: 2px solid blue;
+        } 
+        .post-section{
+            width: 100%; 
+            height: 50%; 
+            border: 2px solid violet; 
+        } 
+        .post-one{
+            width: 25%; 
+            height: 100%; 
+            border: 2px solid blue;
+            float: left; 
+        } 
+        .post-two{
+            width: 25%; 
+            height: 100%; 
+            border: 2px solid blue;
+            float: left; 
+        } 
+        .post-three{
+            width: 25%; 
+            height: 100%; 
+            border: 2px solid blue;
+            float: left;
+        } 
+        .post-four{
+            width: 25%; 
+            height: 100%; 
+            border: 2px solid blue;
+            float: left;
+        } 
+        .about-us{
+            height: 50%; 
+            width: 100%; 
+            border: 2px solid black; 
+        } 
+        .about-us-header{
+            font-size: larger; 
+            text-align: center;
+        } 
+        .footer{
+            height: 50%;
+            width: 100%; 
+            /* border: 2px solid gray;  */
+            background-color: gray; 
+            color: white;
+        } 
+        .footer-one{
+            width: 33.3333%;
+            height: 100%; 
+            /* border: 2px solid black;  */
+            float: left; 
+            
+        }  
+        .footer-one li{
+            display: table-row;
+        }
+        .footer-two{
+            width: 33.3333%;
+            height: 100%; 
+            /* border: 2px solid black;  */
+            float: left;
+        } 
+        .footer-three{
+            width: 33.3333%;
+            height: 100%; 
+            /* border: 2px solid black;  */
+            float: left; 
+            text-align: center; 
+            font-size: small;
+        } 
+        .footer-four{
+            width: 33.3333%;
+            height: 100%; 
+            border: 2px solid black; 
+            float: left;
+        } 
+        .upper-middle{
+            height: 90%; 
+            width: 100%; 
+            /* border: 3px solid darkgreen; */
+        } 
+        .lower-middle{
+            height: 10%; 
+            width: 100%; 
+            /* border: 2px solid blue;  */
+            text-align: center; 
+            padding-bottom: 10px;
+        }
+        </style>
+</head>
+<body> 
+    <nav>
+        <section class="one"> 
+           <a href="{% url 'Index' %}"><h1>Techies Daily</h1></a> 
+        </section> 
+        <section class="two">  
+            
+            <ul>
+                <a href="{% url 'Index' %}"><li>Home</li></a> 
+                <li>About Us</li> 
+                <li>Trending</li> 
+                <a href="{% url 'posts' %}"><li>Blog</li></a>
+            </ul>
+        </section> 
+        <section class="three"> 
+            {% if request.user.is_authenticated %} 
+                <ul> 
+                    <li><button>{{request.user}}</button></li>  
+                    <li><a href="{% url 'logout' %}"><button>Logout</button></a></li> 
+                </ul>
+            {% else %}
+                <ul>
+                    <li><button>Sign-Up</button> </li> 
+                    <li><a href="{% url 'login' %}"><button>Login</button></a> </li>
+                </ul>
+            {% endif %}
+        </section>
+    </nav> 
+    {% block body %} 
+    
+    <section class="herro">
+        <section class="herro-headline"></section> 
+        <section class="herro-business">
+            <section id="one">
+                <h2>Business</h2>
+            </section> 
+            <section id="two">
+                <h2>Agriculture</h2>
+            </section> 
+            <section id="three">
+                <h2>Technology</h2>
+            </section> 
+            <section id="four">
+                <h2>Nerd Life</h2>
+            </section>
+        </section> 
+    </section> 
+    <section class="big-headline"> 
+        
+    <h1>Woah woah woah, slow down genious</h1>  
+        <h2></h2>
+    </section> 
+    <section class="post-section"> 
+        <section class="post-one"> 
+        </section> 
+        <section class="post-two"></section> 
+        <section class="post-three"></section> 
+        <section class="post-four"></section>
+    </section> 
+    <section class="about-us"> 
+        <section class="about-us-header">
+            <h1>About Us</h1> 
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Blanditiis amet laudantium, fugit dolor nulla, esse nihil ipsum laboriosam molestias neque expedita quidem labore cumque commodi quasi adipisci. Repellendus, libero cum.</p>
+        </section>
+    </section>  
+    {% endblock %}
+    <section class="footer"> 
+        <section class="footer-one" style="padding-top: 30px;">
+            <ul>
+                <li>
+                    <a href="#">Top stories</a>
+                </li> <br>
+                <li>
+                    <a href="#">Fans Favourites</a>
+                </li> <br>
+                <li>
+                    <a href="#">Tech bros corner</a>
+                </li> <br>
+                <li>
+                    <a href="#">Jus a Link</a>
+                </li> <br>
+                <li>
+                    <a href="#">Anada wan</a>
+                </li><br>
+            </ul>
+        </section> 
+        <section class="footer-two">
+            <section class="upper-middle"></section> 
+            <section class="lower-middle"> 
+                <h3>Hosea kipkoech</h3>
+            </section>
+        </section> 
+        <section class="footer-three">
+            <ul>
+                <li><h1>Hosea Daily Digest</h1> </li><br>
+                <li><h1>Nchiru street, Meru</h1></li> <br>
+                <li><h1>P.O BOX 122, 30200</h1></li> <br>
+                <li><h1>Meru</h1></li><br>
+                <li><h1>Phone: +254701766079</h1></li> 
+                <li><a href="mailto:hoseakipkoech22@gmail.com">hoseakipkoech22@mail.com</a></li>
+            </ul>
+        </section>
+    </section>
+    <script type="text/javascript" src="{% static 'Js/main.js'%}"></script>
+</body>
+</html>

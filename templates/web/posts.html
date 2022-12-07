@@ -1,0 +1,46 @@
+{% extends 'web/index.html' %}
+{% load static %}  
+<style> 
+    *{
+        box-sizing: border-box;
+    } 
+    html, body{
+        box-sizing: inherit;
+    }
+    section.post-all{
+        width: 25%; 
+        height: 60%; 
+        border: 5px solid black; 
+        float: left; 
+        margin: 15px; 
+        padding: 2px;
+    }
+</style>
+{% block body%}   
+    <section>
+        <form method="get">
+            <input type="text" name="search-area" id="" value="{{search_input}}"> 
+            <button value="search" type="submit">Search</button>
+        </form>
+    </section>
+{% for data in post%}  
+    <section class="post-all" style="width: 25%; 
+    height: 60%; 
+    border: 5px solid black; 
+    float: left; 
+    margin: 15px; 
+    padding: 2px;
+    margin-top: 20px;" >  
+    
+        <h5>{{data.user}}</h5>
+        <h1>{{data.title}}</h1>  
+        <p>{{data.headline}}</p> 
+        <figure>
+            {{data.image}}
+        </figure>
+        <a href="{% url 'details' data.id %}"><button>View post</button></a> 
+        <a href="{% url 'edit_post' data.id %}"><button>Edit Post</button></a> 
+        <a href="{% url 'delete_post' data.id %}"><button>Delete Post</button></a>
+    </section> 
+{% endfor %}
+{% endblock %}

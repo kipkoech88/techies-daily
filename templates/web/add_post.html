@@ -1,0 +1,24 @@
+{% extends 'web/index.html' %}
+{% load static %} 
+<style>
+    section{
+        width: 50%; 
+        height: max-content; 
+        border: 2px solid black;
+    }
+</style>
+{% block body %} 
+    {% if request.user.is_authenticated %} 
+        <h4>{{request.user}}</h4> 
+    {% else %} 
+        <h4>User not loged in</h4> 
+    {% endif %}
+<section>
+    <form action="" method="post">
+        {% csrf_token %} 
+        {{form.as_p}} 
+        <button type="submit">Add</button>
+    </form>
+    
+</section> 
+{% endblock %}

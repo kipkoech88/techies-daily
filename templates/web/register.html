@@ -1,0 +1,13 @@
+{% extends 'web/index.html' %} 
+{% load static %} 
+{% block body %} 
+<section>
+    <form action="" method="post">
+        {% csrf_token %} 
+        {{form.as_p}} 
+        <button type="submit">Register</button>
+    </form> 
+    <p>Already have an account? <a href="{% url 'login' %}">Login</a></p>
+</section>
+
+{% endblock %}

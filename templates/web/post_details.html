@@ -1,0 +1,13 @@
+{% extends 'web/index.html' %}
+{% load static %} 
+{% block body%} 
+<a href="{% url 'posts' %}"><button>Back</button></a>
+<h1>Post: {{post.title}}</h1> 
+<h2>Date posted: {{post.date_posted}}</h2>
+<h3>Author: {{post.user}}</h3> 
+<figure>
+    {{post.image}}
+</figure> 
+<p>{{post.headline}}</p> 
+<p>{{post.full_story}}</p> 
+{% endblock %}
